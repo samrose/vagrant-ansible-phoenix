@@ -1,0 +1,21 @@
+- name: assure consistent apt list repo state
+  shell: sudo rm /var/lib/apt/lists/archive* -vf && sudo rm /var/lib/apt/lists/lock 
+- name: Download my_package
+  get_url: 
+    url="https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb"
+    dest="/home/vagrant/erlang-solutions_1.0_all.deb"
+- name: dpkg -i 
+  shell: sudo dpkg -i /home/vagrant/erlang-solutions_1.0_all.deb
+
+- name: Install required packages
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+    - ntp
+    - git
+    - vim 
+    - esl-erlang 
+    - elixir
+
+#    - libpq-dev 
+#    - python-dev
+#    - postgresql 
