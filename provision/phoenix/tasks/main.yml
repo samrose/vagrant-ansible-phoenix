@@ -1,0 +1,24 @@
+- name: install packages
+  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - nodejs
+    - npm
+
+- name: symlink nodejs to node
+  file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
+
+- name: install local.hex package manager
+  sudo_user: vagrant
+  sudo: yes
+  shell: mix local.hex --force
+  args:
+    creates: /home/vagrant/.mix/archives/hex.ez
+
+
+- name: install phoenix
+  sudo_user: vagrant
+  sudo: yes
+  shell: mix archive.install {{phoenix_version_url}} --force
+  args:
+    creates: /home/vagrant/.mix/archives/{{phoenix_version}}
+
