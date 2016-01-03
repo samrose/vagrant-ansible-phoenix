@@ -1,5 +1,5 @@
 - name: install nodesource.com package via specific setup script
-  shell: curl -sL https://deb.nodesource.com/setup_0.10 | sudo bash -
+  shell: curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - 
 
 - name: install packages
   apt: pkg={{ item }} state=latest update_cache=yes 
