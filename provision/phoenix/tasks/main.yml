@@ -1,8 +1,11 @@
+- name: install nodesource.com package via specific setup script
+  shell: curl -sL https://deb.nodesource.com/setup_0.10 | sudo bash -
+
 - name: install packages
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  apt: pkg={{ item }} state=latest update_cache=yes 
   with_items:
     - nodejs
-    - npm
+
 
 - name: symlink nodejs to node
   file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
