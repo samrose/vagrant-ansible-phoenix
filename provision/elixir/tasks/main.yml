@@ -29,6 +29,7 @@
     - ntp
     - git
     - vim
+    - erlang
     - esl-erlang 
     - elixir
     - inotify-tools
