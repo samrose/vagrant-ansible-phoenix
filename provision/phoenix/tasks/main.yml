@@ -1,8 +1,8 @@
 - name: install nodesource.com package via specific setup script
-  shell: curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - 
+  shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - 
 
 - name: install packages
-  apt: pkg={{ item }} state=latest update_cache=yes 
+  apt: pkg={{ item }} state=latest update_cache=yes
   with_items:
     - nodejs
 
@@ -24,4 +24,3 @@
   shell: mix archive.install {{phoenix_version_url}} --force
   args:
     creates: /home/vagrant/.mix/archives/{{phoenix_version}}
-

@@ -1,27 +1,13 @@
 - name: assure consistent apt list repo state
-  shell: sudo rm /var/lib/apt/lists/archive* -vf && sudo rm /var/lib/apt/lists/lock 
+  shell: sudo rm /var/lib/apt/lists/archive* -vf && sudo rm /var/lib/apt/lists/lock
 
 - name: Download standard erlang
-  get_url: 
+  get_url:
     url="https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb"
     dest="/home/vagrant/erlang-solutions_1.0_all.deb"
 
-- name: dpkg -i erlang solutions deb 
+- name: dpkg -i erlang solutions deb
   shell: sudo dpkg -i /home/vagrant/erlang-solutions_1.0_all.deb
-
-#- name: Download enterprise erlang
-#  get_url: 
-#    url="https://packages.erlang-solutions.com/erlang/esl-erlang/FLAVOUR_2_esl/esl-erlang_18.2-2~ubuntu~trusty_amd64.deb"
-#    dest="/home/vagrant/esl-erlang_18.2-2~ubuntu~trusty_amd64.deb"
-
-#- name: Install required packages
-#  apt: pkg={{ item }} state=installed update_cache=yes
-#  with_items:
-#    - libwxbase3.0-0
-#    - libwxgtk3.0-0 
-
-#- name: dpkg -i 
-#  shell: sudo dpkg -i /home/vagrant/esl-erlang_18.2-2~ubuntu~trusty_amd64.deb
 
 - name: Install required packages
   apt: pkg={{ item }} state=installed update_cache=yes
@@ -29,6 +15,6 @@
     - ntp
     - git
     - vim
-    - esl-erlang 
+    - esl-erlang
     - elixir
     - inotify-tools
