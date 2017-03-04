@@ -13,6 +13,7 @@
   apt: pkg={{ item }} state=installed update_cache=yes
   with_items:
     - ntp
+    - curl
     - git
     - vim
     - esl-erlang
